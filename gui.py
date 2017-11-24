@@ -5,7 +5,6 @@ root = Tk()
 root.title("Reserv")
 root.geometry("650x400+0+0")
 root.resizable(False, False)
-root.iconbitmap("resources/icon.ico")
 
 label_welcome = Label(root,text="Добро пожаловать в Reserv",font="arial")
 label_welcome.place(x=200,y=150,width=250,height=50)
