@@ -10,12 +10,68 @@ https://vk.com/reserv или на почту
 
 Удачного использования :D
 '''
-import os
-#import wget
-import zipfile
-import gui
-from tkinter import *
 
-gui.showWelcomeWindow()
-VersionArray = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4]
-print(gui.showVersionWindow(VersionArray))
+#Я ДЕЛАЛ ЭТОТ КОД НОЧЬЮ ПО ЭТОМУ ТУТ КУЧА ОШИБОК СОРЯН ПОТОМ ВСЕ ИСПРАВЛЮ А СЕЙЧАС ЛЕНЬ
+
+import os
+import zipfile
+import wget
+import essintials
+
+def basicConfigurate():
+    essintials.universalClear()
+    serverName = input("- Мастер конфигурации Reserv -\nДля дальнейшей сборки сервера просим вас пройти первоначальную настройку всех параметров по которым в дальшейшем будет собран ваш сервер.\n\nВведите название сервера: ")
+    serverPort = input("Какой порт вы желаете использовать? (по-умолчанию 25565) ")
+    if serverPort == "":
+        print("Устанавливаем порт 25565. Как по-умолчанию.")
+        serverPort = "25565"
+    serverMode = input("Допускать не лицензированные копии игры на сервер? (да/нет) ")
+    if serverMode != "да" and serverMode != "нет":
+        print("Эм.. " + serverMode + "? Что? Не понял.. Короче, сделаем так чтоб всех пускало, а то ты какой-то непонятный.")
+        serverMode = "нет"
+    serverRcon = input("Хотите-ли использовать протокол удаленного управления сервером RCON? (да/нет) ")
+    if serverRcon == "да":
+        rconPort = input("Ох, ну раз так введите желаемый порт для RCON: ")
+        rconPassword = input("Осталось только ввести пароль (только англ.): ")
+        print("Протокол RCON успешно конфигурирован.")
+    elif serverRcon != "нет":
+        print("Эм.. " + serverRcon + "? Что? Короче нахрен вырубим лучше этот RCON, а то еще взломает кто.")
+        serverRcon = "нет"
+
+    if input("\nКонфигурация сервера успешно проведена. Давайте проверим, всем ли вы удовлетворены.\nИмя: " + serverName + "\nПорт: " + serverPort + "\nОнлайн-режим: " + serverMode + "\nRcon: " + serverRcon + "\nВсе нормально? (да/нет) ") == "да":
+        if serverMode == "да":
+            serverMode = "true"
+        else:
+            serverMode = "false"
+        if serverRcon == "да":
+            serverRcon = "true"
+        else:
+            serverRcon = "false"
+        advncConfigurate()
+    else:
+        basicConfigurate()
+
+def advncConfigurate():
+    essintials.universalClear()
+    serverCore = input("- Продвинутый мастер конфигурации Reserv -\nЭто конфигурация уже по-продвинутей чем та, которая была до этого. Тут уже продвинутые настройки ядра, плагинов и т. д.\n\nСписок поддерживаемых версий:\n1.12, 1.11, 1.10, 1.9, 1.8\nВыберите версию ядра из предложенных: ")
+    if serverCore == "1.12" or serverCore == "1.11" or serverCore == "1.10" or serverCore == "1.9" or serverCore == "1.8":
+        print("Установлена версия ядра " + serverCore + ".")
+    else:
+        print("Какая-то странная версия у тебя. " + serverCore + ".. Кажись такой у нас нет. Поставим тебе последнюю.")
+        serverCore = "1.12"
+    pluginsToInstall = input("Выберите плагины которые вы хотите установить на сервер: \n(тут немного недаделано, все завтра)")
+essintials.universalClear()
+userChoice = input("Reserv " + essintials.colorText("(первая сборка)", "red") + "\nCopyright © Ketsu8, All rights reserved\nGithub: http://github.com/Upbits/Reserv\n\n(Z) Нормальный запуск. Так-как будет у обычных людей.\n(A) Базовая конфигурация\n(B) Продвинутая конфигурация\n(C) Сборка сервера\n")
+if userChoice == "Z" or userChoice == "z":
+    if input("- Лицензионное соглашение Mojang -\nЛицензионное соглашение: https://account.mojang.com/terms\n\nПомните, что все права на исходные коды серверов и плагинов пренадлежат из владельцам. Мы никоем оброзам не пытаемся присвоить из себе.\n\nЯ согласен(а)? (да/нет) ") == "да":
+        basicConfigurate()
+    else:
+        print("ТОГДА ПОШЕЛ ВОТ ОТСЮДА!!!!!!!!!!!!!")
+        quit(0)
+
+elif userChoice == "A" or userChoice == "a":
+    basicConfigurate()
+elif userChoice == "B" or userChoice == "b":
+    advncConfigurate()
+elif userChoice == "C" or userChoice == "c":
+    print("Сборки пока нет. хдхдхдхдхдхдхдхд завтра ее сделаю")
