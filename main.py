@@ -14,8 +14,8 @@ import os
 #import wget
 import zipfile
 import gui
+from tkinter import *
 
-gui.showWelcomeScreen()
-VersionArray = [1,1,1,1]
-gui.showVersionScreen(VersionArray)
-print("sd")
+gui.showWelcomeWindow()
+VersionArray = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4]
+print(gui.showVersionWindow(VersionArray))
