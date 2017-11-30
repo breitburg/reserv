@@ -11,8 +11,11 @@ https://vk.com/reserv или на почту
 Удачного использования :D
 '''
 import os
-import wget
+#import wget
 import zipfile
 import gui
 
-
+gui.showWelcomeScreen()
+VersionArray = [1,1,1,1]
+gui.showVersionScreen(VersionArray)
+print("sd")
