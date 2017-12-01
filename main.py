@@ -16,6 +16,15 @@ import zipfile
 import wget
 import essintials
 
+serverName = ""
+serverMode = ""
+serverPort = ""
+serverRcon = ""
+global serverName
+global serverMode
+global serverRcon
+global serverPort
+
 def basicConfigurate():
     essintials.universalClear()
     serverName = input("- Мастер конфигурации Reserv -\nДля дальнейшей сборки сервера просим вас пройти первоначальную настройку всех параметров по которым в дальшейшем будет собран ваш сервер.\n\nВведите название сервера: ")
@@ -46,10 +55,7 @@ def basicConfigurate():
             serverRcon = "true"
         else:
             serverRcon = "false"
-        global serverName
-        global serverMode
-        global serverRcon
-        global serverPort
+
         advncConfigurate()
     else:
         basicConfigurate()
