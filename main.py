@@ -16,6 +16,9 @@ import zipfile
 import gui
 from tkinter import *
 
-gui.showWelcomeWindow()
+    
+objWelcomeWindow = gui.showWelcomeWindow()
+
 VersionArray = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4]
-print(gui.showVersionWindow(VersionArray))
+
+print(objVersionWindow = gui.showVersionWindow(VersionArray))
