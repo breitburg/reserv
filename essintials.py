@@ -31,3 +31,9 @@ def colorText(text, color):
         return Fore.MAGENTA + text + Style.RESET_ALL
     elif color == "cyan":
         return Fore.CYAN + text + Style.RESET_ALL
+def textFromFile(file):
+	return open(file, "r").read()
+def textToFile(file, text):
+	filea = open(file,"w")
+	filea.write(text)
+	filea.close()
