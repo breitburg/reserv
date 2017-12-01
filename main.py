@@ -53,7 +53,7 @@ if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСерве
     print("Распаковка сервера...")
     essintials.unZip("server.zip", "server/")
     os.remove("server.zip")
-    print("\nЗагрузка ядра....")
+    print("Загрузка ядра....")
     wget.download("http://hack.blinkhub.ru/reserv/cores/" + serverCore + ".jar", "server/")
     print("\nНастройка параметров...")
     servProperties = essintials.textFromFile("server/server.properties")
