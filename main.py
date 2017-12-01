@@ -53,20 +53,22 @@ def basicConfigurate():
 
 def advncConfigurate():
     essintials.universalClear()
-    serverCore = input("- Продвинутый мастер конфигурации Reserv -\nЭто конфигурация уже по-продвинутей чем та, которая была до этого. Тут уже продвинутые настройки ядра, плагинов и т. д.\n\nСписок поддерживаемых версий:\n1.12, 1.11, 1.10, 1.9, 1.8\nВыберите версию ядра из предложенных: ")
+    serverCore = input("- Конфигурация ядра Reserv - \n\nВыберите версию ядра из предложенных (1.12, 1.11, 1.10, 1.9, 1.8): ")
     if serverCore == "1.12" or serverCore == "1.11" or serverCore == "1.10" or serverCore == "1.9" or serverCore == "1.8":
         print("Установлена версия ядра " + serverCore + ".")
     else:
-        print("Какая-то странная версия у тебя. " + serverCore + ".. Кажись такой у нас нет. Поставим тебе последнюю.")
+        print("Какая-то странная версия у тебя. " + serverCore + ". Кажись такой у нас нет. Поставим тебе последнюю.")
         serverCore = "1.12"
-    pluginsToInstall = input("Выберите плагины которые вы хотите установить на сервер: \n(тут немного недаделано, все завтра)")
+    universalClear()
+    pluginsToInstall = input("- Конфигурация ядра Reserv - \n\nВыберите плагины которые вы хотите установить на сервер: \n(тут немного недаделано, все завтра)")
+
 essintials.universalClear()
 userChoice = input("Reserv " + essintials.colorText("(первая сборка)", "red") + "\nCopyright © Ketsu8, All rights reserved\nGithub: http://github.com/Upbits/Reserv\n\n(Z) Нормальный запуск. Так-как будет у обычных людей.\n(A) Базовая конфигурация\n(B) Продвинутая конфигурация\n(C) Сборка сервера\n")
 if userChoice == "Z" or userChoice == "z":
     if input("- Лицензионное соглашение Mojang -\nЛицензионное соглашение: https://account.mojang.com/terms\n\nПомните, что все права на исходные коды серверов и плагинов пренадлежат из владельцам. Мы никоем оброзам не пытаемся присвоить из себе.\n\nЯ согласен(а)? (да/нет) ") == "да":
         basicConfigurate()
     else:
-        print("ТОГДА ПОШЕЛ ВОТ ОТСЮДА!!!!!!!!!!!!!")
+        print("Ну ладно. Тогда пока.")
         quit(0)
 
 elif userChoice == "A" or userChoice == "a":
