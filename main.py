@@ -70,19 +70,9 @@ if userChoice == "Z" or userChoice == "z":
     else:
         print("Ну ладно. Тогда пока.")
         quit(0)
-
-<<<<<<< HEAD
-    
-objWelcomeWindow = gui.showWelcomeWindow()
-
-VersionArray = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4]
-
-print(objVersionWindow = gui.showVersionWindow(VersionArray))
-=======
 elif userChoice == "A" or userChoice == "a":
     basicConfigurate()
 elif userChoice == "B" or userChoice == "b":
     advncConfigurate()
 elif userChoice == "C" or userChoice == "c":
     print("Сборки пока нет. хдхдхдхдхдхдхдхд завтра ее сделаю")
->>>>>>> 5a246be5e04c14b85e2531e9eee24272780ca094
