@@ -31,6 +31,22 @@ serverMode = input("Допускать не лицензированные ко�
 if serverMode != "да" and serverMode != "нет":
     print("Применена настройка по-умолчанию.")
     serverMode = "нет"
+#нововведения
+serverMaxPlayers = input("Введите макисмальное колличество игроков на сервере: ")
+if serverMaxPlayers == "":
+    print("Применена настройка по-умолчанию.")
+    serverMaxPlayers = "20"
+
+serverCBE = input("Разрешить использование командного блока? (да/нет) ")
+if serverCBE != "нет" and serverCBE != "да":
+    print("Применена настройка по-умолчанию.")
+    serverCBE = "нет"
+
+serverPVP = input("Разрешить PVP на вашем сервере? (да/нет) ")
+if serverPVP != "нет" and serverPVP != "да":
+    print("Применена настройка по-умолчанию.")
+    serverPVP = "нет"
+
 
 serverRcon = input("Хотите-ли использовать протокол удаленного управления сервером RCON? (да/нет) ")
 if serverRcon == "да":
@@ -39,6 +55,7 @@ if serverRcon == "да":
 elif serverRcon != "нет":
     print("Применена настройка по-умолчанию.")
     serverRcon = "нет"
+
 serverCore = input("Выберите версию ядра (c 1.8 по 1.12): ")
 if serverCore == "1.12" or serverCore == "1.11" or serverCore == "1.10" or serverCore == "1.9" or serverCore == "1.8":
     print("Установлена версия ядра " + serverCore + ".")
@@ -57,17 +74,28 @@ if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСерве
     wget.download("http://hack.blinkhub.ru/reserv/cores/" + serverCore + ".jar", "server/")
     print("\nНастройка параметров...")
     servProperties = essintials.textFromFile("server/server.properties")
-
     if serverMode == "да":
         serverMode = "true"
     else:
         serverMode = "false"
+
     if serverRcon == "да":
         serverRcon = "true"
     else:
         serverRcon = "false"
+        rconPassword = "false"
+        rconPort = "false"
 
-    essintials.textToFile("server/server.properties", servProperties.replace("server-port=RESERV", "server-port=" + serverPort).replace("online-mode=RESERV", "online-mode=" + serverMode).replace("motd=RESERV", "motd=" + serverName).replace("enable-rcon=RESERV", "enable-rcon=" + serverRcon))
+    if serverCBE == "да":
+        serverCBE = "true"
+    else:
+        serverCBE = "false"
+
+    if serverPVP == "да":
+        serverPVP = "true"
+    else:
+        serverPVP = "false"
+    essintials.textToFile("server/server.properties", servProperties.replace("server-port=RESERV", "server-port=" + serverPort).replace("online-mode=RESERV", "online-mode=" + serverMode).replace("motd=RESERV", "motd=" + serverName).replace("enable-rcon=RESERV", "enable-rcon=" + serverRcon).replace("rcon.port=RESERV", "rcon.port=" + rconPort).replace("rcon.password=RESERV", "rcon.password=" + rconPassword).replace("pvp=RESERV", "pvp=" + serverPVP).replace("max-players=RESERV", "max-players=" + serverMaxPlayers).replace("enable-command-block=RESERV", "enable-command-block=" + serverCBE))
     print("\nСборка сервера завершена.")
 else:
     print("Отмена сборки сервера.")
