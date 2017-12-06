@@ -98,7 +98,6 @@ if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСерве
         print(maxRAM + " это слишком много для сервера! Установим 1024MB.")
         maxRAM = "1024"
     if platform.system() == "Windows":
-        os.mknod("server/start.bat")
         essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui\n@PAUSE")
     else:
         os.mknod("server/start.sh")
