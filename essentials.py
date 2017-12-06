@@ -34,6 +34,6 @@ def colorText(text, color):
 def textFromFile(file):
 	return open(file, "r").read()
 def textToFile(file, text):
-	filea = open(file,"w")
+	filea = open(file,"w+")
 	filea.write(text)
 	filea.close()
