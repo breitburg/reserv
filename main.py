@@ -100,14 +100,13 @@ if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСерве
     if platform.system() == "Windows":
         essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui\n@PAUSE")
     else:
-        os.mknod("server/start.sh")
         essentials.textToFile("server/start.sh", "java -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui")
         os.chmod("server/start.sh", 777)
     if input("Сборка сервера завершена.\nЗапустить сервер сейчас? (да/нет) ") == "да":
         if platform.system() == "Windows":
-            os.system("server/start.bat")
+            os.system(os.getcwd() + "/server/start.bat")
         else:
-            os.system("sh server/start.sh")
+            os.system("sh " + os.getcwd() + "/server/start.sh")
     print("До следующий сборки сервера! Программа создана командой Upbits.\nВКонтакте: https://vk.com/upbits")
 else:
     print("Отмена сборки сервера.")
