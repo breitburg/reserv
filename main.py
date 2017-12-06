@@ -11,16 +11,13 @@ https://vk.com/reserv или на почту
 Удачного использования :D
 '''
 
-import os
-import zipfile
-import wget
-import essintials
+import os, zipfile, wget, essentials, platform
 
-essintials.universalClear()
+essentials.universalClear()
 input("Добро пожаловать в Reserv\nCopyright © Ketsu8, All rights reserved.\nGithub: http://github.com/Upbits/Reserv\n\nНажмите на (Enter) чтобы приступить к сборке собственного сервера Minecraft...\n")
-essintials.universalClear()
+essentials.universalClear()
 input("Лицензионное соглашение Reserv\nCopyright © Ketsu8, All rights reserved.\n\nВсе права на исходный код серверов\nи плагинов пренадлежат их праваобладателям.\nМы никоим образом не пытаемся присвоить их себе. В то\nвремя как права на исходный код Reserv пренадлежат\nкоманде UpBits на момент 2017 - 2018г.\n\nЕсли вы согласны, то нажмите на (Enter).\n")
-essintials.universalClear()
+essentials.universalClear()
 serverName = input("Сборка сервера Reserv\nCopyright © Ketsu8, All rights reserved.\n\nВведите название сервера: ")
 serverPort = input("Какой порт вы желаете использовать? (по-умолчанию 25565) ")
 if serverPort == "":
@@ -62,18 +59,18 @@ if serverCore == "1.12" or serverCore == "1.11" or serverCore == "1.10" or serve
 else:
     print("Применена настройка по-умолчанию.")
     serverCore = "1.12"
-essintials.universalClear()
+essentials.universalClear()
 if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСервер " + serverName + " был успешно сконфигурирован. Вы выбрали версию " + serverCore + ", онлайн-режим установили на " + serverMode + ", использовали порт " + serverPort + " и установили статус RCON на " + serverRcon + ".\n\n(Y) Запустить сборку\n(B) Отменить сборку\n") == "Y":
-    essintials.universalClear()
+    essentials.universalClear()
     print("Загрузка сервера...")
     wget.download("http://hack.blinkhub.ru/reserv/server.zip")
     print("Распаковка сервера...")
-    essintials.unZip("server.zip", "server/")
+    essentials.unZip("server.zip", "server/")
     os.remove("server.zip")
     print("Загрузка ядра....")
     wget.download("http://hack.blinkhub.ru/reserv/cores/" + serverCore + ".jar", "server/")
     print("\nНастройка параметров...")
-    servProperties = essintials.textFromFile("server/server.properties")
+    servProperties = essentials.textFromFile("server/server.properties")
     if serverMode == "да":
         serverMode = "true"
     else:
@@ -95,8 +92,24 @@ if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСерве
         serverPVP = "true"
     else:
         serverPVP = "false"
-    essintials.textToFile("server/server.properties", servProperties.replace("server-port=RESERV", "server-port=" + serverPort).replace("online-mode=RESERV", "online-mode=" + serverMode).replace("motd=RESERV", "motd=" + serverName).replace("enable-rcon=RESERV", "enable-rcon=" + serverRcon).replace("rcon.port=RESERV", "rcon.port=" + rconPort).replace("rcon.password=RESERV", "rcon.password=" + rconPassword).replace("pvp=RESERV", "pvp=" + serverPVP).replace("max-players=RESERV", "max-players=" + serverMaxPlayers).replace("enable-command-block=RESERV", "enable-command-block=" + serverCBE))
-    print("\nСборка сервера завершена.")
+    essentials.textToFile("server/server.properties", servProperties.replace("server-port=RESERV", "server-port=" + serverPort).replace("online-mode=RESERV", "online-mode=" + serverMode).replace("motd=RESERV", "motd=" + serverName).replace("enable-rcon=RESERV", "enable-rcon=" + serverRcon).replace("rcon.port=RESERV", "rcon.port=" + rconPort).replace("rcon.password=RESERV", "rcon.password=" + rconPassword).replace("pvp=RESERV", "pvp=" + serverPVP).replace("max-players=RESERV", "max-players=" + serverMaxPlayers).replace("enable-command-block=RESERV", "enable-command-block=" + serverCBE))
+    maxRAM = input("Введите максимальное колличество ОЗУ в мегабайтах: (по-умолчанию 1024) ")
+    if int(maxRAM) > 2048:
+        print(maxRAM + " это слишком много для сервера! Установим 1024MB.")
+        maxRAM = "1024"
+    if platform.system() == "Windows":
+        os.mknod("server/start.bat")
+        essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui\n@PAUSE")
+    else:
+        os.mknod("server/start.sh")
+        essentials.textToFile("server/start.sh", "java -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui")
+        os.chmod("server/start.sh", 777)
+    if input("Сборка сервера завершена.\nЗапустить сервер сейчас? (да/нет) ") == "да":
+        if platform.system() == "Windows":
+            os.system("server/start.bat")
+        else:
+            os.system("sh server/start.sh")
+    print("До следующий сборки сервера! Программа создана командой Upbits.\nВКонтакте: https://vk.com/upbits")
 else:
     print("Отмена сборки сервера.")
     quit(5)
