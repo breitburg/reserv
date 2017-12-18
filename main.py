@@ -60,7 +60,8 @@ else:
     print("Применена настройка по-умолчанию.")
     serverCore = "1.12"
 essentials.universalClear()
-if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСервер " + serverName + " был успешно сконфигурирован. Вы выбрали версию " + serverCore + ", онлайн-режим установили на " + serverMode + ", использовали порт " + serverPort + " и установили статус RCON на " + serverRcon + ".\n\n(Y) Запустить сборку\n(B) Отменить сборку\n") == "Y":
+isBuild = input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСервер " + serverName + " был успешно сконфигурирован. Вы выбрали версию " + serverCore + ", онлайн-режим установили на " + serverMode + ", использовали порт " + serverPort + " и установили статус RCON на " + serverRcon + ".\n\n(Y) Запустить сборку\n(B) Отменить сборку\n")
+if isBuild == "Y" or isBuild == "":
     essentials.universalClear()
     print("Загрузка сервера...")
     wget.download("http://hack.blinkhub.ru/reserv/server.zip")
@@ -94,8 +95,14 @@ if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСерве
         serverPVP = "false"
     essentials.textToFile("server/server.properties", servProperties.replace("server-port=RESERV", "server-port=" + serverPort).replace("online-mode=RESERV", "online-mode=" + serverMode).replace("motd=RESERV", "motd=" + serverName).replace("enable-rcon=RESERV", "enable-rcon=" + serverRcon).replace("rcon.port=RESERV", "rcon.port=" + rconPort).replace("rcon.password=RESERV", "rcon.password=" + rconPassword).replace("pvp=RESERV", "pvp=" + serverPVP).replace("max-players=RESERV", "max-players=" + serverMaxPlayers).replace("enable-command-block=RESERV", "enable-command-block=" + serverCBE))
     maxRAM = input("Введите максимальное колличество ОЗУ в мегабайтах: (по-умолчанию 1024) ")
-    if int(maxRAM) > 2048:
+    if maxRAM == "":
+        print("Применена настройка по-умолчанию.")
+        maxRAM = "1024"
+    elif int(maxRAM) > 2048:
         print(maxRAM + " это слишком много для сервера! Установим 1024MB.")
+        maxRAM = "1024"
+    else:
+        print("Применена настройка по-умолчанию.")
         maxRAM = "1024"
     if platform.system() == "Windows":
         essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui\n@PAUSE")
@@ -104,9 +111,11 @@ if input("Reserv Builder\nCopyright © Ketsu8, All rights reserved\n\nСерве
         os.chmod("server/start.sh", 777)
     if input("Сборка сервера завершена.\nЗапустить сервер сейчас? (да/нет) ") == "да":
         if platform.system() == "Windows":
-            os.system(os.getcwd() + "/server/start.bat")
+            os.chdir("server/")
+            os.system("start.bat")
         else:
-            os.system("sh " + os.getcwd() + "/server/start.sh")
+            os.chdir("server/")
+            os.system("sh start.sh")
     print("До следующий сборки сервера! Программа создана командой Upbits.\nВКонтакте: https://vk.com/upbits")
 else:
     print("Отмена сборки сервера.")
