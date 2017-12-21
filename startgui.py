@@ -1,3 +1,4 @@
+print("Запуск Reserv с интегрированым интерфейсом.")
 import gui
 
 objWelcomeWindow = gui.showWelcomeWindow()
