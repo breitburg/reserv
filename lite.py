@@ -11,7 +11,22 @@ https://vk.com/reserv или на почту
 Удачного использования :D
 '''
 
-import os, zipfile, wget, essentials, platform #импорт всех нужных библиотек
+try:
+    import os, zipfile, wget, essentials, platform, time, requests #импорт всех нужных библиотек
+except:
+    import platform, os
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
+    print("У вас не найдены некоторые библиотеки которые нужны для работы программы, либо при импорте библиотек произошла ошибка. Сейчас произайдет автоматическая установка нужных библиотек.")
+    if platform.system() == "Windows":
+        os.system("pip3 install wget requests")
+    else:
+        os.system("sudo pip3 install wget requests")
+    print("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
+    time.sleep(3)
+    os.system("python3 lite.py")
 
 essentials.universalClear() #вызов функции универсальной отчистки
 input("Добро пожаловать в Reserv\nCopyright © Ketsu8, All rights reserved.\nGithub: http://github.com/Upbits/Reserv\n\nНажмите на (Enter) чтобы приступить к сборке собственного сервера Minecraft...\n")
@@ -67,14 +82,14 @@ else:
     serverRcon = "нет"
 
 #ядро сервера
-serverCore = input("Выберите версию ядра (c 1.8 по 1.12): ")
-#потом реализую по-нормальному
-#но сейчас и так сойдет!
-if serverCore == "1.12" or serverCore == "1.11" or serverCore == "1.10" or serverCore == "1.9" or serverCore == "1.8":
+essentials.universalClear()
+serverCore = input("Доступные версии:\n" + requests.get("http://hack.blinkhub.ru/reserv/coreslist.txt").text + "\n\nВыберите версию ядра : ")
+if requests.head("http://hack.blinkhub.ru/reserv/cores/" + serverCore + ".jar").status_code == requests.codes.ok:
     print("Установлена версия ядра " + serverCore + ".")
-else:
+elif (requests.head("http://hack.blinkhub.ru/reserv/cores/" + serverCore + ".jar").status_code != requests.codes.ok) or (serverCore == ""):
     print("Применена настройка по-умолчанию.")
     serverCore = "1.12"
+time.sleep(5)
 essentials.universalClear()
 
 #начинается полный пипец
@@ -154,16 +169,8 @@ if isBuild == "Y" or isBuild == "":
     if platform.system() == "Windows":
         essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui\n@PAUSE")
     else:
-        essentials.textToFile("server/start.sh", "java -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui")
-        os.chmod("server/start.sh", 777)
-    if input("Сборка сервера завершена.\nЗапустить сервер сейчас? (да/нет) ") == "да":
-        if platform.system() == "Windows":
-            os.chdir("server/")
-            os.system("start.bat")
-        else:
-            os.chdir("server/")
-            os.system("sh start.sh")
-    print("До следующий сборки сервера! Программа создана командой Upbits.\nВКонтакте: https://vk.com/upbits")
+        essentials.textToFile("server/start.sh", "echo \"Reserv-Server\"\njava -Xmx" + maxRAM + "M -Xms" + maxRAM + "M -jar " + serverCore + ".jar nogui")
+    print("Сборка сервера завершена!\nДо следующий сборки сервера! Программа создана командой Upbits.\nВКонтакте: https://vk.com/upbits")
 else:
     print("Отмена сборки сервера.")
     quit(5)
