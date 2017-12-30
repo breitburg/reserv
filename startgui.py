@@ -18,12 +18,12 @@ except:
         os.system("cls")
     else:
         os.system("clear")
-    creatingWindow.changeText("У вас не найдены некоторые библиотеки которые нужны для работы программы, либо при импорте библиотек произошла ошибка. Сейчас произайдет автоматическая установка нужных библиотек.")
+    print("У вас не найдены некоторые библиотеки которые нужны для работы программы, либо при импорте библиотек произошла ошибка. Сейчас произайдет автоматическая установка нужных библиотек.")
     if platform.system() == "Windows":
         os.system("pip3 install wget requests")
     else:
         os.system("sudo pip3 install wget requests")
-    creatingWindow.changeText("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
+    print("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
     time.sleep(3)
     os.system("python3 lite.py")
 
