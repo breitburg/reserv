@@ -11,7 +11,7 @@ https://vk.com/reserv или на почту
 Удачного использования :D
 '''
 try:
-    import os, zipfile, wget, essentials, platform, time, requests, gui, belfrywidgets, threading #импорт всех нужных библиотек
+    import os, zipfile, wget, essentials, platform, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиотек
 except:
     import platform, os
     if platform.system() == "Windows":
@@ -90,7 +90,7 @@ controlEvent = threading.Event()
 creatingWindow = gui.showCreateWindow()
 
 def windowThread():
-    creatingWindow.show(controlEvent)
+    creatingWindow.show(controlEvent,serverName)
 
 t = threading.Thread(target=windowThread)
 t.start()
@@ -171,8 +171,6 @@ if platform.system() == "Windows":
     essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx 1024M -Xms1024M -jar " + serverCore + ".jar nogui\n@PAUSE")
 else:
     essentials.textToFile("server/start.sh", "echo \"Reserv-Server\"\njava -Xmx1024M -Xms1024M -jar " + serverCore + ".jar nogui")
-creatingWindow.exit()
 
-
-allDone = gui.showEndWindow()
-allDone.show()
+creatingWindow.changeText("Всё готово!")
+creatingWindow.end()

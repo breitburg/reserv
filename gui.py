@@ -82,7 +82,7 @@ class showSettingsWindow():
         MP_Label = Label(self.root,text="Максимальное количество игроков:",font="arial 10")
         MP_Label.place(x=0,y=80)
         self.MP_Entry = ttk.Entry(self.root,style="TEntry")
-        self.MP_Entry.place(x=190,y=80,width=190,height=20)
+        self.MP_Entry.place(x=220,y=80,width=190,height=20)
 
         onlineMode_Check = ttk.Checkbutton(self.root,text="Онлайн режим",variable=self.onlineMode_Choose,onvalue=1,offvalue=0)
         onlineMode_Check.place(x=0,y=120)
@@ -286,61 +286,43 @@ class showServerInfoWindow():
             quit() #то выполняется зарезервированная функция quit
 
 class showCreateWindow():
-    def show(self, event):
+    def show(self,event,serverName):
         self.returnArray = [] #Создание массива returnArray
         self.root = Tk()
         windowX = int(self.root.winfo_screenwidth() / 2 - 325) #Вычисление центра экрана пользователя по X'у
         windowY = int(self.root.winfo_screenheight() / 2 - 200) #Вычисление центра экрана пользователя по Y'у
         self.root.title("Reserv") #Сэтим имя окна 
-        self.root.geometry("650x400+" + str(windowX) + "+" + str(windowY)) #Сэтим размер окна
+        self.root.geometry("450x100+" + str(windowX) + "+" + str(windowY)) #Сэтим размер окна
         self.root.resizable(False, False) #Установка возможности изменить размер окна на False (По ширине и длине)
         self.root.protocol("WM_DELETE_WINDOW", self.ingore) #Установка функции appExit на кнопку "X"
 
+        self.serverNameLabel = Label(self.root,text="Сборка сервера: " + serverName)
+        self.serverNameLabel.place(x=0,y=0) 
+        
         self.infoCreateLabel = Label(self.root,text="")
-        self.infoCreateLabel.place(x=200,y=150)
+        self.infoCreateLabel.place(x=180,y=40)
 
         event.set()
         self.root.mainloop()
+        return self.returnArray
 
-    def exit():
+    def exit(self):
         self.root.destroy()
+    
+    def end(self):
+        self.infoCreateLabel.destroy()
+        self.serverNameLabel.destroy()
+        nextButton = ttk.Button(self.root,text="готово",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
+        nextButton.place(x=180,y=40,width=100,height=25) #Размещение кнопки по кординатам и установка площади
 
     def ingore(self):
         pass
 
-    def changeText(self,text):
-        self.infoCreateLabel.delete('1.0', END)
-        self.infoCreateLabel.insert(1.0,text)
-
-class showEndWindow():
-    def show(self):
-        self.returnArray = [] #Создание массива returnArray
-        self.root = Tk()
-        windowX = int(self.root.winfo_screenwidth() / 2 - 325) #Вычисление центра экрана пользователя по X'у
-        windowY = int(self.root.winfo_screenheight() / 2 - 200) #Вычисление центра экрана пользователя по Y'у
-        self.root.title("Reserv") #Сэтим имя окна 
-        self.root.geometry("650x400+" + str(windowX) + "+" + str(windowY)) #Сэтим размер окна
-        self.root.resizable(False, False) #Установка возможности изменить размер окна на False (По ширине и длине)
-        #self.root.protocol("WM_DELETE_WINDOW", quit) #Установка функции appExit на кнопку "X"
-
-        s = ttk.Style()
-        s.configure("TButton",bg="white",fg="black",font="arial 10") #Создание стиля "TButton"
-        s.configure("TEntry",font="arial 10") #Создание стиля "TEntry"
-
-        infoLabel = Label(self.root,text="Сервер готов!",font="arial 10") #Создание текста со свойствами
-        infoLabel.place(x=200,y=150,width=250,height=50) #Размещение текста по кординатам и установка площади
-
-        nextButton = ttk.Button(self.root,text="старт!",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
-        nextButton.place(x=485,y=370,width=100,height=25) #Размещение кнопки по кординатам и установка площади
-
-        backButton = ttk.Button(self.root,text="выйти",style="TButton",command=self.backAction) #Создание кнопки со свойствами
-        backButton.place(x=370,y=370,width=100,height=25) #Размещение кнопки по кординатам и установка площади
-
-        self.root.mainloop()
+    def changeText(self,textV):
+        self.infoCreateLabel.configure(text=textV)
+    
     def nextAction(self):
-        self.returnArray = ["NEXT"]
-        self.root.destroy()
+        quit(0)
 
     def backAction(self):
-        self.returnArray = ["BACK"]
-        self.root.destroy()
+        quit(0)
