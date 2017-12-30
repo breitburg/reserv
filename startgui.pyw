@@ -28,7 +28,10 @@ except:
         os.system("sudo pip3 install wget requests belfrywidgets colorama")
     print("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
     time.sleep(3)
-    os.system("python3 lite.py")
+    if platform.system() == "Windows":
+        os.system("python startgui.py")
+    else:
+        os.system("python3 startgui.py")
 
  #вызов функции универсальной отчистки
 welcome = gui.showWelcomeWindow()
