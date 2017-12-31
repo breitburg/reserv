@@ -10,8 +10,11 @@ https://vk.com/upbits или на почту
 
 Удачного использования :D
 '''
+import platform
+if platform.system() == "Darwin":
+    quit()
 try:
-    import os, zipfile, wget, essentials, platform, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиотек
+    import os, zipfile, wget, essentials, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиотек
 except:
     import platform, os
     if platform.system() == "Windows":
@@ -20,9 +23,9 @@ except:
         os.system("clear")
     print("У вас не найдены некоторые библиотеки которые нужны для работы программы, либо при импорте библиотек произошла ошибка. Сейчас произайдет автоматическая установка нужных библиотек.")
     if platform.system() == "Windows":
-        os.system("pip3 install wget requests")
+        os.system("pip3 install wget requests belfrywidgets threading")
     else:
-        os.system("sudo pip3 install wget requests")
+        os.system("sudo pip3 install wget requests belfrywidgets threading")
     print("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
     time.sleep(3)
     os.system("python3 lite.py")
