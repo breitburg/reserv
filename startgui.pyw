@@ -14,7 +14,7 @@ import platform
 if platform.system() == "Darwin":
     quit()
 try:
-    import os, zipfile, wget, essentials, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиотек
+    import os, zipfile, wget, essentials, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиот
 except:
     import platform, os
     if platform.system() == "Windows":
@@ -23,9 +23,9 @@ except:
         os.system("clear")
     print("У вас не найдены некоторые библиотеки которые нужны для работы программы, либо при импорте библиотек произошла ошибка. Сейчас произайдет автоматическая установка нужных библиотек.")
     if platform.system() == "Windows":
-        os.system("pip3 install wget requests belfrywidgets threading")
+        os.system("pip3 install wget requests belfrywidgets colorama")
     else:
-        os.system("sudo pip3 install wget requests belfrywidgets threading")
+        os.system("sudo pip3 install wget requests belfrywidgets colorama")
     print("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
     time.sleep(3)
     os.system("python3 lite.py")
@@ -174,6 +174,5 @@ if platform.system() == "Windows":
     essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx1024M -Xms1024M -jar " + serverCore + ".jar nogui\n@PAUSE")
 else:
     essentials.textToFile("server/start.sh", "echo \"Reserv-Server\"\njava -Xmx1024M -Xms1024M -jar " + serverCore + ".jar nogui")
-
 creatingWindow.changeText("Всё готово!")
 creatingWindow.end()
