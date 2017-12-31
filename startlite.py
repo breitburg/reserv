@@ -5,8 +5,8 @@ Copyright © Upbits Team, 2017 – 2018.
 GitHub: http://github.com/Upbits/
 
 По вопросом Reserv писать сюда:
-https://vk.com/reserv или на почту
-<reserv@blinkhub.ru>.
+https://vk.com/upbits или на почту
+<upbits@blinkhub.ru>.
 
 Удачного использования :D
 '''

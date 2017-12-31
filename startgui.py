@@ -1,12 +1,12 @@
 '''
-Reserv Lite
+Reserv GUI
 
 Copyright © Upbits Team, 2017 – 2018.
 GitHub: http://github.com/Upbits/
 
 По вопросом Reserv писать сюда:
-https://vk.com/reserv или на почту
-<reserv@blinkhub.ru>.
+https://vk.com/upbits или на почту
+<upbits@blinkhub.ru>.
 
 Удачного использования :D
 '''
@@ -168,7 +168,7 @@ essentials.textToFile("server/server.properties", superDuperCustomConfig)
 #надеюсь что ты не глупый человек и сам
 #сможешь в этом разрбраться...
 if platform.system() == "Windows":
-    essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx 1024M -Xms1024M -jar " + serverCore + ".jar nogui\n@PAUSE")
+    essentials.textToFile("server/start.bat", "@echo Reserv-Server\njava -Xmx1024M -Xms1024M -jar " + serverCore + ".jar nogui\n@PAUSE")
 else:
     essentials.textToFile("server/start.sh", "echo \"Reserv-Server\"\njava -Xmx1024M -Xms1024M -jar " + serverCore + ".jar nogui")
 
