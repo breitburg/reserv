@@ -14,9 +14,9 @@ import platform
 if platform.system() == "Darwin":
     quit()
 try:
-    import os, zipfile, wget, essentials, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиот
+    import os, zipfile, wget, essentials, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиотек
 except:
-    import platform, os
+    import platform, os, time
     if platform.system() == "Windows":
         os.system("cls")
     else:
@@ -24,14 +24,16 @@ except:
     print("У вас не найдены некоторые библиотеки которые нужны для работы программы, либо при импорте библиотек произошла ошибка. Сейчас произайдет автоматическая установка нужных библиотек.")
     if platform.system() == "Windows":
         os.system("pip3 install wget requests belfrywidgets colorama")
+    elif platform.system() == "Linux":
+        os.system("sudo pip3 install wget requests belfrywidgets colorama && sudo apt install python3-tk")
     else:
         os.system("sudo pip3 install wget requests belfrywidgets colorama")
     print("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
     time.sleep(3)
     if platform.system() == "Windows":
-        os.system("python startgui.py")
+        os.system("python startgui.pyw")
     else:
-        os.system("python3 startgui.py")
+        os.system("python3 startgui.pyw")
 
  #вызов функции универсальной отчистки
 welcome = gui.showWelcomeWindow()
