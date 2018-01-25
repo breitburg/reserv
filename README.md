@@ -36,10 +36,10 @@ cd <папка с проектом>
 
 * Шаг 2
 ```sh
-python startgui.py
+python startgui.pyw
 ```
 
 А для Linux используйте:
 ```sh
-python3 startgui.py
+python3 startgui.pyw
 ```
