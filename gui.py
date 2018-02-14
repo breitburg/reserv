@@ -1,8 +1,10 @@
 '''
 Этот скрипт отвечает за графический интерфейс
 Создан в 2017 Батухтиным Ильёй.
-Copyright © Upbits Team, 2017.
+Copyright © Upbits Team, 2018.
 Требования: Любая система, Python 3, Tkinter library
+
+Отредактирован Ketsu8, 14 февраля 2018. С днем всех влюбленных :)
 '''
 
 from tkinter import * #Импорт tkinter'а
@@ -47,7 +49,7 @@ class showSettingsWindow():
         self.root = Tk()
         windowX = int(self.root.winfo_screenwidth() / 2 - 325) #Вычисление центра экрана пользователя по X'у
         windowY = int(self.root.winfo_screenheight() / 2 - 200) #Вычисление центра экрана пользователя по Y'у
-        self.root.title("Reserv") #Сэтим имя окна 
+        self.root.title("Reserv") #Сэтим имя окна
         self.root.geometry("650x400+" + str(windowX) + "+" + str(windowY)) #Сэтим размер окна
         self.root.resizable(False, False) #Установка возможности изменить размер окна на False (По ширине и длине)
         self.root.protocol("WM_DELETE_WINDOW", self.appExit) #Установка функции appExit на кнопку "X"
@@ -78,7 +80,7 @@ class showSettingsWindow():
         self.port_Entry = ttk.Entry(self.root,style="TEntry")
         self.port_Entry.place(x=90,y=40,width=190,height=20)
         ToolTip(self.port_Entry,"Данный параметр определяет значение порта в протоколах TCP и UDP, который будет использовать сервер игры")
-        
+
         MP_Label = Label(self.root,text="Максимальное количество игроков:",font="arial 10")
         MP_Label.place(x=0,y=80)
         self.MP_Entry = ttk.Entry(self.root,style="TEntry")
@@ -95,7 +97,7 @@ class showSettingsWindow():
         PVP_Check = ttk.Checkbutton(self.root,text="PVP",variable=self.PVP_Choose,onvalue=1,offvalue=0)
         PVP_Check.place(x=0,y=200)
         ToolTip(PVP_Check,"Включает/отключает получение урона игрокам от атак других игроков на сервере. При true игроки смогут «воевать» между собой, убивая друг друга. Если уставлено значение false, игроки не смогут наносить прямой урон один другому.")
-        
+
         D_Label = Label(self.root,text="Сложность:",font="arial 10")
         D_Label.place(x=0,y=240)
         ToolTip(D_Label,"Уровень сложности")
@@ -114,10 +116,10 @@ class showSettingsWindow():
         self.GM_Combo.bind("<FocusIn>", self.antiSelection)
         ToolTip(self.GM_Combo,"Игровой режим по умолчанию")
 
-        nextButton = ttk.Button(self.root,text="далее",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
+        nextButton = ttk.Button(self.root,text="Далее",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
         nextButton.place(x=485,y=370,width=100,height=25) #Размещение кнопки по кординатам и установка площади
 
-        backButton = ttk.Button(self.root,text="назад",style="TButton",command=self.backAction, state=DISABLED) #Создание кнопки со свойствами
+        backButton = ttk.Button(self.root,text="Назад",style="TButton",command=self.backAction, state=DISABLED) #Создание кнопки со свойствами
         backButton.place(x=370,y=370,width=100,height=25) #Размещение кнопки по кординатам и установка площади
 
         if name is not None:
@@ -147,12 +149,12 @@ class showSettingsWindow():
     def antiSelection(self,event):
         event.widget.master.focus_set()
         pass
-    
+
     def nextAction(self):
         self.returnArray = ["NEXT",self.name_Entry.get(),self.port_Entry.get(),self.onlineMode_Choose.get(),self.CBE_Choose.get(),self.PVP_Choose.get(),self.MP_Entry.get(),self.D_Combo.get(),self.GM_Combo.get()]
         self.root.destroy() #Уничтожение окна
         pass
-    
+
     def backAction(self):
         self.returnArray = ["BACK",self.name_Entry.get(),self.port_Entry.get(),self.D_Combo.get(),self.GM_Combo.get(),self.CBE_Choose.get(),self.PVP_Choose.get()]
         self.root.destroy() #Уничтожение окна
@@ -170,7 +172,7 @@ class showVersionWindow():
         self.root = Tk()
         windowX = int(self.root.winfo_screenwidth() / 2 - 325) #Вычисление центра экрана пользователя по X'у
         windowY = int(self.root.winfo_screenheight() / 2 - 200) #Вычисление центра экрана пользователя по Y'у
-        self.root.title("Reserv") #Сэтим имя окна 
+        self.root.title("Reserv") #Сэтим имя окна
         self.root.geometry("650x400+" + str(windowX) + "+" + str(windowY)) #Сэтим размер окна
         self.root.resizable(False, False) #Установка возможности изменить размер окна на False (По ширине и длине)
         self.root.protocol("WM_DELETE_WINDOW", self.appExit) #Установка функции appExit на кнопку "X"
@@ -198,12 +200,12 @@ class showVersionWindow():
 
         canvas.configure(scrollregion=canvas.bbox('all'), yscrollcommand=versionScroll.set) #Изменение свойств холста
         canvas.place(x=0,y=45,height=300) #Размещение холста по кординатам и установка площади
-        versionScroll.place(x=635,y=0,width=15,height=400) #Размещение scrollbar'а по кординатам и установка площади 
+        versionScroll.place(x=635,y=0,width=15,height=400) #Размещение scrollbar'а по кординатам и установка площади
 
-        nextButton = ttk.Button(self.root,text="далее",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
+        nextButton = ttk.Button(self.root,text="Далее",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
         nextButton.place(x=485,y=370,width=100,height=25) #Размещение кнопки по кординатам и установка площади
 
-        backButton = ttk.Button(self.root,text="назад",style="TButton",command=self.backAction,state=DISABLED) #Создание кнопки со свойствами
+        backButton = ttk.Button(self.root,text="Назад",style="TButton",command=self.backAction,state=DISABLED) #Создание кнопки со свойствами
         backButton.place(x=370,y=370,width=100,height=25) #Размещение кнопки по кординатам и установка площади
 
         if Version is not None:
@@ -211,21 +213,21 @@ class showVersionWindow():
 
         self.root.mainloop()
         return self.returnArray
-    
+
     def nextAction(self):
         self.returnArray.insert(0,"NEXT") #Установка значения NEXT в 0 индекс массива
         self.returnArray.insert(1,self.serverChoose.get()) #Установка значения переменной serverChoose в 1 индекс массива через функцию get()
         self.root.destroy() #Уничтожение окна
         pass
-    
+
     def backAction(self):
         self.returnArray.insert(0,"BACK") #Установка значения BACK в 0 индекс массива
         self.returnArray.insert(1,self.serverChoose.get()) #Установка значения переменной serverChoose в 1 индекс массива через функцию get()
         self.root.destroy() #Уничтожение окна
         pass
-    
+
     def appExit(self):
-        if messagebox.askokcancel("Выйти?","Вы точно хотите выйти из программы?"): #Если результат ответа от пользователя положительный
+        if messagebox.askokcancel("Предупреждение", "Вы точно хотите выйти из программы?"): #Если результат ответа от пользователя положительный
             quit() #то выполняется зарезервированная функция quit
             pass
         pass
@@ -236,7 +238,7 @@ class showServerInfoWindow():
         self.root = Tk()
         windowX = int(self.root.winfo_screenwidth() / 2 - 325) #Вычисление центра экрана пользователя по X'у
         windowY = int(self.root.winfo_screenheight() / 2 - 200) #Вычисление центра экрана пользователя по Y'у
-        self.root.title("Reserv") #Сэтим имя окна 
+        self.root.title("Reserv") #Сэтим имя окна
         self.root.geometry("650x400+" + str(windowX) + "+" + str(windowY)) #Сэтим размер окна
         self.root.resizable(False, False) #Установка возможности изменить размер окна на False (По ширине и длине)
         self.root.protocol("WM_DELETE_WINDOW", self.appExit) #Установка функции appExit на кнопку "X"
@@ -250,7 +252,7 @@ class showServerInfoWindow():
 
         portNameLabel = Label(self.root,text="Порт сервера: " + port)
         portNameLabel.place(x=0,y=25)
-        
+
         onlineModeLabel = Label(self.root,text="Онлайн режим: " + onlineMode)
         onlineModeLabel.place(x=0,y=50)
 
@@ -271,10 +273,10 @@ class showServerInfoWindow():
 
         backButton = ttk.Button(self.root,text="отменить",style="TButton",command=self.backAction) #Создание кнопки со свойствами
         backButton.place(x=370,y=370,width=100,height=25) #Размещение кнопки по кординатам и установка площади
-        
+
         self.root.mainloop()
-        return 
-        
+        return
+
     def nextAction(self):
         self.root.destroy()
 
@@ -282,7 +284,7 @@ class showServerInfoWindow():
         quit(0)
 
     def appExit(self):
-        if messagebox.askokcancel("Выйти?","Вы точно хотите выйти из программы?"): #Если результат ответа от пользователя положительный
+        if messagebox.askokcancel("Предупреждение", "Вы точно хотите выйти из программы?"): #Если результат ответа от пользователя положительный
             quit() #то выполняется зарезервированная функция quit
 
 class showCreateWindow():
@@ -291,14 +293,14 @@ class showCreateWindow():
         self.root = Tk()
         windowX = int(self.root.winfo_screenwidth() / 2 - 325) #Вычисление центра экрана пользователя по X'у
         windowY = int(self.root.winfo_screenheight() / 2 - 200) #Вычисление центра экрана пользователя по Y'у
-        self.root.title("Reserv") #Сэтим имя окна 
+        self.root.title("Reserv") #Сэтим имя окна
         self.root.geometry("450x100+" + str(windowX) + "+" + str(windowY)) #Сэтим размер окна
         self.root.resizable(False, False) #Установка возможности изменить размер окна на False (По ширине и длине)
         self.root.protocol("WM_DELETE_WINDOW", self.ingore) #Установка функции appExit на кнопку "X"
 
-        self.serverNameLabel = Label(self.root,text="Сборка сервера: " + serverName)
-        self.serverNameLabel.place(x=0,y=0) 
-        
+        self.serverNameLabel = Label(self.root,text="Сборка сервера " + serverName + "...")
+        self.serverNameLabel.place(x=0,y=0)
+
         self.infoCreateLabel = Label(self.root,text="")
         self.infoCreateLabel.place(x=180,y=40)
 
@@ -308,11 +310,11 @@ class showCreateWindow():
 
     def exit(self):
         self.root.destroy()
-    
+
     def end(self):
         self.infoCreateLabel.destroy()
         self.serverNameLabel.destroy()
-        nextButton = ttk.Button(self.root,text="готово",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
+        nextButton = ttk.Button(self.root,text="Готово",style="TButton",command=self.nextAction) #Создание кнопки со свойствами
         nextButton.place(x=180,y=40,width=100,height=25) #Размещение кнопки по кординатам и установка площади
 
     def ingore(self):
@@ -320,7 +322,7 @@ class showCreateWindow():
 
     def changeText(self,textV):
         self.infoCreateLabel.configure(text=textV)
-    
+
     def nextAction(self):
         quit(0)
 

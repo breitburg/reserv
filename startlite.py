@@ -14,16 +14,16 @@ https://vk.com/upbits или на почту
 try:
     import os, zipfile, wget, essentials, platform, time, requests #импорт всех нужных библиотек
 except:
-    import platform, os
+    import platform, os, time
     if platform.system() == "Windows":
         os.system("cls")
     else:
         os.system("clear")
     print("У вас не найдены некоторые библиотеки которые нужны для работы программы, либо при импорте библиотек произошла ошибка. Сейчас произайдет автоматическая установка нужных библиотек.")
     if platform.system() == "Windows":
-        os.system("pip3 install wget requests")
+        os.system("pip3 install wget requests colorama")
     else:
-        os.system("sudo pip3 install wget requests")
+        os.system("sudo pip3 install wget requests colorama")
     print("Все библиотеки установлены. Сейчас произайдет перезапуск Reserv.")
     time.sleep(3)
     os.system("python3 lite.py")
@@ -108,7 +108,7 @@ if isBuild == "Y" or isBuild == "":
     os.remove("server.zip")
     print("Загрузка ядра....")
     #дальше идет загрузка самого важного компанента
-    #сервера – ядра... короче просто подставляется 
+    #сервера – ядра... короче просто подставляется
     #переменная с версией ядра... все очень просто
     #и с костылями конечго-же... потом как-нибуть...
     wget.download("http://hack.blinkhub.ru/reserv/cores/" + serverCore + ".jar", "server/")
