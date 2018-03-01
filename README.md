@@ -3,7 +3,7 @@
 The GUI version of the utility differs from Lite in the presence of a graphical interface. The Lite version does not.
 You can start the Lite-utility using the command line in Windows or terminal in macOS and Linux by running this command:
 
-![](screenshots / lite.png)
+![](screenshots/lite.png)
 
 Linux and macOS:
 ```sh
@@ -26,7 +26,7 @@ Done!
 The utility has a graphical interface, all functions from the Lite version are transferred and supplemented.
 > Sorry, but macOS is temporarily not supported.
 
-![](screenshots / gui.png)
+![](screenshots/gui.png)
 
 For Windows:
 * Step 1
