@@ -1,45 +1,45 @@
 ## Reserv Lite
 
-GUI версия утилиты отличается от Lite наличием графического интерфейса. В Lite версии его нет.
-Запустить Lite-утилиту можно используя командную строку в Windows или терминал в macOS и Linux ведя эту команду:
+The GUI version of the utility differs from Lite in the presence of a graphical interface. The Lite version does not.
+You can start the Lite-utility using the command line in Windows or terminal in macOS and Linux by running this command:
 
-![](screenshots/lite.png)
+![](screenshots / lite.png)
 
-Linux и macOS:
+Linux and macOS:
 ```sh
 python3 startlite.py
 ```
-В Windows будет достаточно просто выполнить двойной клик по файлу lite.py или открыть его в интерпретаторе Python 3, но также можно запустить используя командную строку. Делается это так:
-* Шаг 1
+In Windows, it will be simple enough to double-click on the lite.py file or open it in the Python 3 interpreter, but you can also run it using the command line. This is done like this:
+* Step 1
 ```sh
-cd <папка с проектом>
+cd <project folder>
 ```
 
-* Шаг 2
+* Step 2
 ```sh
 python startlite.py
 ```
-Готово!
+Done!
 
 ## Reserv GUI
 
-Утилита имеющая графический интерфейс, перенемая все функции из Lite версии и дополняя их.
-> Извеняемся, но macOS временно неподдерживается.
+The utility has a graphical interface, all functions from the Lite version are transferred and supplemented.
+> Sorry, but macOS is temporarily not supported.
 
-![](screenshots/gui.png)
+![](screenshots / gui.png)
 
-Для Windows:
-* Шаг 1
+For Windows:
+* Step 1
 ```sh
-cd <папка с проектом>
+cd <project folder>
 ```
 
-* Шаг 2
+* Step 2
 ```sh
 python startgui.pyw
 ```
 
-А для Linux используйте:
+And for Linux, use:
 ```sh
 python3 startgui.pyw
 ```
