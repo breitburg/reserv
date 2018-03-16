@@ -10,9 +10,13 @@ https://vk.com/upbits или на почту
 
 Удачного использования :D
 '''
+
 import platform
-if platform.system() == "Darwin":
-    quit()
+from tkinter import messagebox
+
+#if platform.system() == "Darwin":
+#    messagebox.showerror(title="Ошибка", message="Извините, но macOS не поддерживается. Для обратной связи обратитесь в поддержку.")
+#    quit()
 try:
     import os, zipfile, wget, essentials, time, requests, gui, belfrywidgets, threading, sys #импорт всех нужных библиотек
 except:
@@ -35,10 +39,9 @@ except:
     else:
         os.system("python3 startgui.pyw")
 
- #вызов функции универсальной отчистки
+#вызов функции универсальной отчистки
 welcome = gui.showWelcomeWindow()
 welcome.show()
-
 
 #приветствие и ввод адреса сервера
 config = gui.showSettingsWindow()
@@ -73,9 +76,17 @@ gameMode = s[8]
 
 #ядро сервера
 ver = gui.showVersionWindow()
-verList = ["1.12", "1.11", "1.10", "1.9", "1.8", "1.5"]
+verList = requests.get("http://ketsu8.ru/reserv/cores/cores_list.txt").text.split()
 choosedVersion = ver.show(verList, None)
 serverCore = str(verList[int(choosedVersion[1]) - 1])
+
+plug = gui.showPluginWindow()
+pluginsList = requests.get("http://ketsu8.ru/reserv/plugins/plugins_list.txt").text.split()
+selectedPlugins = plug.show(PluginsArray=pluginsList)
+pluginToInstall = []
+for plugin_it in selectedPlugins:
+    if selectedPlugins[plugin_it].get() == True:
+        pluginToInstall.append(plugin_it)
 
 #начинается полный пипец
 info = gui.showServerInfoWindow()
@@ -108,7 +119,7 @@ controlEvent.wait()
 creatingWindow.changeText("Загрузка сервера...")
 #скачивается база сервера с сервера
 #прямо рекурсия получается
-wget.download("http://hack.blinkhub.ru/reserv/guiserv.zip", "server.zip")
+wget.download("http://ketsu8.ru/reserv/bundle.zip", "server.zip")
 creatingWindow.changeText("Распаковка сервера...")
 #распаковывается сервер
 #используя функцию unZip из
@@ -117,10 +128,17 @@ essentials.unZip("server.zip", "server/")
 os.remove("server.zip")
 creatingWindow.changeText("Загрузка ядра....")
 #дальше идет загрузка самого важного компанента
-#сервера – ядра... короче просто подставляется 
+#сервера – ядра... короче просто подставляется
 #переменная с версией ядра... все очень просто
 #и с костылями конечго-же... потом как-нибуть...
-wget.download("http://hack.blinkhub.ru/reserv/cores/" + serverCore + ".jar", "server/")
+wget.download("http://ketsu8.ru/reserv/cores/" + serverCore + ".jar", "server/")
+creatingWindow.changeText("\nУстановка плагинов...")
+
+for plugin in pluginToInstall:
+    creatingWindow.changeText("\nЗагрузка " + plugin + "...")
+    wget.download("http://ketsu8.ru/reserv/plugins/" + plugin + ".jar", "server/plugins/")
+    creatingWindow.changeText("\nПлагин " + plugin + " установлен...")
+
 creatingWindow.changeText("\nНастройка параметров...")
 #уу! настройка параметров!
 #готовится самая главная переменная
