@@ -3,8 +3,6 @@
 Создан в 2017 Батухтиным Ильёй.
 Copyright © Upbits Team, 2018.
 Требования: Любая система, Python 3, Tkinter library
-
-Отредактирован Ketsu8, 14 февраля 2018. С днем всех влюбленных :)
 '''
 
 from tkinter import *  # Импорт tkinter'а
@@ -13,7 +11,6 @@ from tkinter import filedialog  # Импорт из tkinter'а filedialog
 from tkinter import messagebox  # Импорт из tkinter'а messagebox
 from belfrywidgets import ToolTip  # Импорт из belfrywidgets ToolTip
 import platform,threading  # Импорт platform,threading
-
 
 class showWelcomeWindow():
     def show(self):
