@@ -1,8 +1,6 @@
 ## Reserv
 > macOS is temporarily not supported.
 
-![](screenshots/gui.png)
-
 #### How to run it
 For Windows:
 * Step 1
