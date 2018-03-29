@@ -1,28 +1,12 @@
 ## Reserv
 
-Now supports Windows and Linux.
+A simple program for simplifying the creation of a Minecraft server.
+Now supports Windows, Linux and macOS.
 To run required Python 3 and Python pip.
 
-> macOS is temporarily not supported.
+#### Links
+Ketsu8 – [Twitter](http://twitter.com/ketraid), [VK](http://vk.com/breitburg), [Telegram](http://telegram.me/ketsu8)
 
-#### How to run it
-For Windows:
-* Step 1
-```sh
-cd <project folder>
-```
+bat256 – [Twitter](http://twitter.com/Ffenahaxe), [VK](http://vk.com/ilya.batukhtin), [Telegram](http://telegram.me/bat256)
 
-* Step 2
-```sh
-python startgui.pyw
-```
-
-For Linux, use:
-```sh
-python3 startgui.pyw
-```
-
-#### Authors
-Ketsu8 - [Twitter](http://twitter.com/ketraid), [VK](http://vk.com/breitburg), [Telegram](http://telegram.me/ketsu8)
-
-Ffenahaxe - [Twitter](http://twitter.com/Ffenahaxe), [VK](http://vk.com/ilya.batukhtin)
+Offical site – http://upbits.org/
