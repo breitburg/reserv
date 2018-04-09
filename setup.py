@@ -15,7 +15,7 @@ if platform.system() == "Windows":
     base = None
     if sys.platform == 'win32' : base = 'Win32GUI'
 
-    opts = {'include_files' : ['logo.png', 'new_version_banner.png', 'done_pic.png'], 'includes' : ['PyQt5', 'sip', 'requests', 'wget', 'zipfile', 'os']}
+    opts = {'include_files' : ['logo.png', 'new_version_banner_ru.png', 'done_pic.png', 'lang.py', 'new_version_banner_en.png'], 'includes' : ['PyQt5', 'sip', 'requests', 'wget', 'zipfile', 'os']}
 
     setup(
     name = 'Reserv',
@@ -28,7 +28,7 @@ elif platform.system() == "Darwin":
     from setuptools import setup
 
     APP = ['main.py']
-    DATA_FILES = ['logo.png', 'new_version_banner.png', 'done_pic.png']
+    DATA_FILES = ['logo.png', 'new_version_banner_ru.png', 'done_pic.png', 'lang.py', 'new_version_banner_en.png']
     OPTIONS = {'argv_emulation': True,
      'iconfile': 'mac_icon.icns',
      'includes': ['sip', 'PyQt5', 'wget', 'os', 'zipfile'],

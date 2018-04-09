@@ -1,15 +1,16 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QDesktopServices
-from PyQt5.QtWidgets import QWidget, QToolTip, QPushButton, QApplication, QMessageBox, QLabel, QLineEdit, QCheckBox, QComboBox, QListView, QFileDialog, QProgressBar
+from PyQt5.QtWidgets import QWidget, QToolTip, QPushButton, QApplication, QMessageBox, QLabel, QLineEdit, QCheckBox, QComboBox, QListView, QFileDialog, QProgressBar, QInputDialog
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject
 from PyQt5 import QtCore
 from PyQt5.QtCore import QThread, QUrl
-import sys, platform, requests, wget, time, zipfile, os
+import sys, platform, requests, wget, time, zipfile, os, lang
 
+INSTALLEDlANG = lang.EN
 WINDOWS = "Windows"
 DARWIN = "Darwin"
-__version__ = "1.0"
+__version__ = "1.1"
 
 class UVar():
     def __init__(self):
@@ -86,14 +87,17 @@ class main(QtWidgets.QMainWindow):
         def __init__(self, window):
             if requests.get("http://upbits.org/reserv/lv.txt").text.split()[0] != str(__version__):
                 newver_pic = QLabel(window)
-                pixmap = QPixmap('new_version_banner.png')
+                if INSTALLEDlANG == lang.RU:
+                    pixmap = QPixmap('new_version_banner_ru.png')
+                elif INSTALLEDlANG == lang.EN:
+                    pixmap = QPixmap('new_version_banner_en.png')
                 newver_pic.setPixmap(pixmap)
                 newver_pic.mousePressEvent = self.open_update
                 newver_pic.setOpenExternalLinks(True)
                 newver_pic.resize(pixmap.width(), pixmap.height())
 
             next_button = QtWidgets.QPushButton(window)
-            next_button.setText("Продолжить")
+            next_button.setText(INSTALLEDlANG["nextButton"])
             next_button.clicked.connect(self.go_next)
 
             copyright_label = QLabel("Copyright © Upbits, 2018\nhttp://upbits.org/", window)
@@ -130,37 +134,37 @@ class main(QtWidgets.QMainWindow):
             objPluginsLayer.hideElements()
         def __init__(self, window):
             next_button = QtWidgets.QPushButton(window)
-            next_button.setText("Продолжить")
+            next_button.setText(INSTALLEDlANG["nextButton"])
             next_button.clicked.connect(self.go_next)
 
             back_button = QtWidgets.QPushButton(window)
-            back_button.setText("Назад")
+            back_button.setText(INSTALLEDlANG["backButton"])
             back_button.clicked.connect(objWelcomeLayer.go_back)
 
-            serverMotdLabel = QLabel("Описание сервера:", window)
+            serverMotdLabel = QLabel(INSTALLEDlANG["descServer"], window)
             self.serverMotdEntry = QLineEdit(window)
             self.serverMotdEntry.setText("Reserv Server")
 
-            serverPortLabel = QLabel("Порт сервера:", window)
+            serverPortLabel = QLabel(INSTALLEDlANG["serverPort"], window)
             self.serverPortEntry = QLineEdit(window)
             self.serverPortEntry.setText("25565")
 
-            serverMaxPlayersLabel = QLabel("Кол-во игроков:", window)
+            serverMaxPlayersLabel = QLabel(INSTALLEDlANG["playersCount"], window)
             self.serverMaxPlayersEntry = QLineEdit(window)
             self.serverMaxPlayersEntry.setText("20")
 
-            self.serverOnlineModeCheckbox = QCheckBox("Онлайн-режим", window)
+            self.serverOnlineModeCheckbox = QCheckBox(INSTALLEDlANG["onlineMode"], window)
             self.serverOnlineModeCheckbox.setChecked(True)
 
-            self.serverCommandBlockEnableCheckbox = QCheckBox("Командные блоки", window)
-            self.serverPVPCheckbox = QCheckBox("Разрешить PVP", window)
+            self.serverCommandBlockEnableCheckbox = QCheckBox(INSTALLEDlANG["commandBlocks"], window)
+            self.serverPVPCheckbox = QCheckBox(INSTALLEDlANG["allowPVP"], window)
             self.serverPVPCheckbox.setChecked(True)
 
-            serverDifficultyLabel = QLabel("Сложность:", window)
+            serverDifficultyLabel = QLabel(INSTALLEDlANG["serverDifficulty"], window)
             self.serverDifficultyCombobox = QComboBox(window)
-            self.serverDifficultyCombobox.addItems(['Мирная', 'Легкая', 'Нормальная', 'Сложная'])
+            self.serverDifficultyCombobox.addItems(INSTALLEDlANG["difficultyList"])
 
-            serverVersionLabel = QLabel("Версия:", window)
+            serverVersionLabel = QLabel(INSTALLEDlANG["serverVersion"], window)
             self.serverVersionCombobox = QComboBox(window)
             self.serverVersionCombobox.addItems(requests.get("http://upbits.org/reserv/cores/cores_list.txt").text.split())
             if platform.system() == DARWIN:
@@ -259,13 +263,13 @@ class main(QtWidgets.QMainWindow):
             objSaveServLayer.hideElements()
         def __init__(self, window):
             next_button = QtWidgets.QPushButton(window)
-            next_button.setText("Продолжить")
+            next_button.setText(INSTALLEDlANG["nextButton"])
             next_button.clicked.connect(self.go_next)
 
             back_button = QtWidgets.QPushButton(window)
-            back_button.setText("Назад")
+            back_button.setText(INSTALLEDlANG["backButton"])
 
-            infoPlugLabel = QLabel("Выберите плагины, которые вы хотите установить:", window)
+            infoPlugLabel = QLabel(INSTALLEDlANG["choosePluginsToInstall"], window)
 
             pluginsList = QListView(window)
             back_button.clicked.connect(objSetingsLayer.go_back)
@@ -318,7 +322,7 @@ class main(QtWidgets.QMainWindow):
             self.window.serverBuildThread.start()
 
         def openDir(self):
-            self.serverSavePath = QFileDialog.getExistingDirectory(self.window,"Выберите папку")
+            self.serverSavePath = QFileDialog.getExistingDirectory(self.window, INSTALLEDlANG["chooseDirectory"])
             self.directoryEntry.setText(self.serverSavePath)
             if self.serverSavePath != "":
                 self.next_button.setDisabled(False)
@@ -328,19 +332,19 @@ class main(QtWidgets.QMainWindow):
         def __init__(self, window):
             self.window = window
             self.next_button = QtWidgets.QPushButton(window)
-            self.next_button.setText("Собрать")
+            self.next_button.setText(INSTALLEDlANG["buildButton"])
             self.next_button.clicked.connect(self.go_next)
             self.next_button.setDisabled(True)
 
             back_button = QtWidgets.QPushButton(window)
-            back_button.setText("Назад")
+            back_button.setText(INSTALLEDlANG["backButton"])
             back_button.clicked.connect(objPluginsLayer.go_back)
 
-            serverDirLabel = QLabel("Пожалуйста, выберите папку в которой будет сохранен собранный сервер.", window)
+            serverDirLabel = QLabel(INSTALLEDlANG["chooseDirectoryToSaveServer"], window)
             serverDirLabel.resize(500, 15)
 
             openDir_button = QtWidgets.QPushButton(window)
-            openDir_button.setText("Выбрать папку")
+            openDir_button.setText(INSTALLEDlANG["chooseDirectory"])
             openDir_button.clicked.connect(self.openDir)
 
             self.directoryEntry = QLineEdit(window)
@@ -386,7 +390,7 @@ class main(QtWidgets.QMainWindow):
             self.buildingLabel.setText(self.textVar.getr())
 
         def __init__(self, window):
-            self.buildingLabel = QLabel("Пожалуйста подождите, идет сборка сервера...", window)
+            self.buildingLabel = QLabel(INSTALLEDlANG["pleaseWaitServerBuilding"], window)
             buildingLabelChanger.changeSignal.connect(self.changeText)
             buildingLabelChanger.setChangeVar(self.textVar)
             self.progressBar = QProgressBar(window)
@@ -421,18 +425,18 @@ class main(QtWidgets.QMainWindow):
         def exit(self):
             app.exit()
         def __init__(self, window):
-            done_label = QLabel("Сборка сервера была успешно завершена.\nБлагодарим за использование продуктов Upbits.\nУдачной игры!", window)
+            done_label = QLabel(INSTALLEDlANG["wellDone"], window)
             back_pic = QLabel(window)
             pixmap = QPixmap('done_pic.png')
             back_pic.setPixmap(pixmap)
             back_pic.resize(pixmap.width(), pixmap.height())
 
             donate_button = QtWidgets.QPushButton(window)
-            donate_button.setText("Пожертвовать")
+            donate_button.setText(INSTALLEDlANG["donateButton"])
             donate_button.clicked.connect(self.open_donate)
 
             close_button = QtWidgets.QPushButton(window)
-            close_button.setText("Закрыть")
+            close_button.setText(INSTALLEDlANG["closeButton"])
             close_button.clicked.connect(self.exit)
 
             if platform.system() == DARWIN:
@@ -462,41 +466,38 @@ class main(QtWidgets.QMainWindow):
         #print(objSetingsLayer.serverPVPCheckbox.isChecked())
         #objSetingsLayer.serverMotdEntry.text()
         #objSetingsLayer.serverVersionCombobox.currentText()
-        buildingLabelChanger.setText("Загрузка сервера...")
+        buildingLabelChanger.setText(INSTALLEDlANG["downloadingServer"])
         setrMaxProgressProgressbar.signal.emit(100)
         wget.download("http://upbits.org/reserv/bundle.zip", objSaveServLayer.serverSavePath + "/server.zip", bar=objBuildingLayer.progressbar_gui)
         setrProgressProgressbar.signal.emit(0)
         setrMaxProgressProgressbar.signal.emit(0)
-        buildingLabelChanger.setText("Распаковка сервера...")
+        buildingLabelChanger.setText(INSTALLEDlANG["unpackingServer"])
 
         with zipfile.ZipFile(objSaveServLayer.serverSavePath + "/server.zip", "r") as zip_ref:
             zip_ref.extractall(objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text())
 
-        buildingLabelChanger.setText("Удаление кэша...")
+        buildingLabelChanger.setText(INSTALLEDlANG["removeCache"])
         os.remove(objSaveServLayer.serverSavePath + "/server.zip")
-        buildingLabelChanger.setText("Загрузка ядра...")
+        buildingLabelChanger.setText(INSTALLEDlANG["downloadingCore"])
         setrMaxProgressProgressbar.signal.emit(100)
         wget.download("http://upbits.org/reserv/cores/" + objSetingsLayer.serverVersionCombobox.currentText() + ".jar", objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text(), bar=objBuildingLayer.progressbar_gui)
         setrProgressProgressbar.signal.emit(0)
         setrMaxProgressProgressbar.signal.emit(0)
-        buildingLabelChanger.setText("Установка плагинов...")
-
         for plug in plugsDict.items():
             if plug[1].checkState() == 2:
-                buildingLabelChanger.setText("Загрузка " + plug[0] + "...")
+                buildingLabelChanger.setText(INSTALLEDlANG["downloading"] + plug[0] + "...")
                 setrMaxProgressProgressbar.signal.emit(100)
                 wget.download("http://upbits.org/reserv/plugins/" + plug[0] + ".jar", objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text() + "/plugins/", bar=objBuildingLayer.progressbar_gui)
                 setrProgressProgressbar.signal.emit(0)
-                buildingLabelChanger.setText("Установлен " + plug[0] + ".")
         setrMaxProgressProgressbar.signal.emit(0)
 
-        buildingLabelChanger.setText("Настройка параметров...")
+        buildingLabelChanger.setText(INSTALLEDlANG["settings"])
         file_contains = open(objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text() + "/server.properties", "r").read()
-        if objSetingsLayer.serverDifficultyCombobox.currentText() == "Мирная":
+        if objSetingsLayer.serverDifficultyCombobox.currentText() == INSTALLEDlANG["difficultyList"][0]:
             serverDiff = "0"
-        elif objSetingsLayer.serverDifficultyCombobox.currentText() == "Легкая":
+        elif objSetingsLayer.serverDifficultyCombobox.currentText() == INSTALLEDlANG["difficultyList"][1]:
             serverDiff = "1"
-        elif objSetingsLayer.serverDifficultyCombobox.currentText() == "Нормальная":
+        elif objSetingsLayer.serverDifficultyCombobox.currentText() == INSTALLEDlANG["difficultyList"][2]:
             serverDiff = "2"
         else:
             serverDiff = "3"
@@ -518,12 +519,22 @@ class main(QtWidgets.QMainWindow):
         endShower.signal.emit()
 
     def __init__(self):
+        global INSTALLEDlANG
         super().__init__()
+        item, ok = QInputDialog.getItem(self, "Language", "Select your language:", lang.langsList, 0, False)
+        if ok and item:
+            if item == lang.langsList[0]:
+                INSTALLEDlANG = lang.RU
+            elif item == lang.langsList[1]:
+                INSTALLEDlANG = lang.EN
+        else:
+            QMessageBox.critical(self, "Select language", "Please select the language next time.")
+            quit()
         try:
             requests.get("http://upbits.org/")
         except:
-            QMessageBox.critical(self, "Ошибка подключения", "Произошла ошибка подключения к серверу. Повторите попытку позже.")
-            quit()
+            QMessageBox.critical(self, INSTALLEDlANG["connectError"], INSTALLEDlANG["connectErrorText"])
+            app.exit()
         if platform.system() == WINDOWS:
             self.setWindowIcon(QIcon('win_icon.ico'))
         if platform.system() == DARWIN:
