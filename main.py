@@ -1,3 +1,8 @@
+'''
+Reserv (new)
+Multiplatform application for easyer creating Minecraft Servers.
+Copyright © 2018 Upbits. All rights reserved.
+'''
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QDesktopServices
 from PyQt5.QtWidgets import QWidget, QToolTip, QPushButton, QApplication, QMessageBox, QLabel, QLineEdit, QCheckBox, QComboBox, QListView, QFileDialog, QProgressBar, QInputDialog
