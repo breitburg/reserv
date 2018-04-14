@@ -18,5 +18,5 @@ Before installing the Reserv on Windows, you will definitely need to install [Vi
 ### Donate
 If you want to support the project, then please do it [here](http://www.donationalerts.ru/r/upbits). And you can [follow me](http://twitter.com/ketraid) on the twitter!
 
--
+---
 ###### Copyright © 2018, Upbits. Contact: <contact@upbits.org>
