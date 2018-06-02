@@ -1,8 +1,12 @@
-'''
-Reserv (new)
-Multiplatform application for easyer creating Minecraft Servers.
-Copyright © 2018 Upbits. All rights reserved.
-'''
+# Reserv
+
+# Multiplatform application for easyer creating Minecraft Servers.
+# The graphical interface is implemented using PyQt5.
+# All rights to Minecraft belong to Mojang.
+# Please support us by donating: http://www.donationalerts.ru/c/upbits.
+# Copyright © 2018 Upbits. All rights reserved.
+# Thanks for using our software :D
+
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QDesktopServices
 from PyQt5.QtWidgets import QWidget, QToolTip, QPushButton, QApplication, QMessageBox, QLabel, QLineEdit, QCheckBox, QComboBox, QListView, QFileDialog, QProgressBar, QInputDialog
@@ -12,10 +16,13 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import QThread, QUrl
 import sys, platform, requests, wget, time, zipfile, os, lang
 
-INSTALLEDlANG = lang.EN
+INSTALLEDlANG = lang.EN # Language installed by default
+__version__ = "1.1" # Reserv version. Please don't edit
+
+# It's just for bat256
+# He is lazy xD
 WINDOWS = "Windows"
 DARWIN = "Darwin"
-__version__ = "1.1"
 
 class UVar():
     def __init__(self):
@@ -90,7 +97,8 @@ class main(QtWidgets.QMainWindow):
         def open_update(self, event):
             QDesktopServices.openUrl(QUrl(requests.get("http://upbits.org/reserv/lv.txt").text.split()[1]))
         def __init__(self, window):
-            if requests.get("http://upbits.org/reserv/lv.txt").text.split()[0] != str(__version__):
+            # Checking updates from Upbits server
+            if requests.get("http://upbits.org/reserv/lv.txt").text.split()[0] != str(__version__): # Getting newest verison from server
                 newver_pic = QLabel(window)
                 if INSTALLEDlANG == lang.RU:
                     pixmap = QPixmap('new_version_banner_ru.png')
@@ -468,9 +476,6 @@ class main(QtWidgets.QMainWindow):
 
     @Thread
     def serverBuildThread():
-        #print(objSetingsLayer.serverPVPCheckbox.isChecked())
-        #objSetingsLayer.serverMotdEntry.text()
-        #objSetingsLayer.serverVersionCombobox.currentText()
         buildingLabelChanger.setText(INSTALLEDlANG["downloadingServer"])
         setrMaxProgressProgressbar.signal.emit(100)
         wget.download("http://upbits.org/reserv/bundle.zip", objSaveServLayer.serverSavePath + "/server.zip", bar=objBuildingLayer.progressbar_gui)
