@@ -9,11 +9,7 @@ Before installing the Reserv on Windows, you will definitely need to install [Vi
 
 **[Download Reserv for Windows](http://upbits.org/reserv/ReservSetup.exe) (Windows 7+)**
 
-![](http://reserv.upbits.org/images/reserv_win1.png)
-
 **[Download Reserv for macOS](http://upbits.org/reserv/ReservMac.dmg) (10.11+)**
-
-![](http://reserv.upbits.org/images/reserv_mac1.png) 
 
 ### Donate
 If you want to support the project, then please do it [here](http://www.donationalerts.ru/r/upbits). And you can [follow me](http://twitter.com/ketraid) on the twitter!
