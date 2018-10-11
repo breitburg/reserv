@@ -5,9 +5,13 @@ Reserv – is a open-source multiplatform program for quickly creating servers f
 
 ### Download
 
-Before installing the Reserv on Windows, you will definitely need to install [Visual C++ Redistributable 2015](https://www.microsoft.com/en-US/download/details.aspx?id=48145).
+|    OS   | Version | Codename |   Status  |
+|:-------:|:-------:|:--------:|:---------:|
+| Windows | 2.0.0.0 | Reborn   | Supported |
+| Mac     | 1.1     | Classic  | Outdated  |
+| Linux   | 1.1     | Classic  | Outdated  |
 
-**[Download Reserv](http://upbits.org/reserv#download)**
+You can download Reserv for free using **[this](http://upbits.org/reserv#download)** link.
 
 ### Donate
 If you want to support the project, then please do it [here](http://www.donationalerts.ru/r/upbits). And you can [follow me](http://twitter.com/ketraid) on the twitter!
