@@ -1,5 +1,5 @@
 '''
-On windows:
+On Windows:
 python setup.py build
 
 On macOS:

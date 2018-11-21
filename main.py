@@ -14,13 +14,18 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject
 from PyQt5 import QtCore
 from PyQt5.QtCore import QThread, QUrl
-import sys, platform, requests, wget, time, zipfile, os, lang
+import sys
+import platform
+import requests
+import wget
+import time
+import zipfile
+import os
+import resources.lang as lang
 
 INSTALLEDlANG = lang.EN # Language installed by default
-__version__ = "1.1" # Reserv version. Please don't edit
+__version__ = '1.1' # Reserv version. Please don't edit it
 
-# It's just for bat256
-# He is lazy xD
 WINDOWS = "Windows"
 DARWIN = "Darwin"
 
@@ -95,15 +100,15 @@ class main(QtWidgets.QMainWindow):
             objWelcomeLayer.showElements()
             objSetingsLayer.hideElements()
         def open_update(self, event):
-            QDesktopServices.openUrl(QUrl(requests.get("http://upbits.org/reserv/lv.txt").text.split()[1]))
+            QDesktopServices.openUrl(QUrl(requests.get("https://github.com/upbits/reserv-classic/raw/master/database/lv.txt").text.split()[1]))
         def __init__(self, window):
             # Checking updates from Upbits server
-            if requests.get("http://upbits.org/reserv/lv.txt").text.split()[0] != str(__version__): # Getting newest verison from server
+            if requests.get("https://github.com/upbits/reserv-classic/raw/master/database/lv.txt").text.split()[0] != str(__version__): # Getting newest verison from server
                 newver_pic = QLabel(window)
                 if INSTALLEDlANG == lang.RU:
-                    pixmap = QPixmap('new_version_banner_ru.png')
+                    pixmap = QPixmap('resources/banner/ru.png')
                 elif INSTALLEDlANG == lang.EN:
-                    pixmap = QPixmap('new_version_banner_en.png')
+                    pixmap = QPixmap('resources/banner/en.png')
                 newver_pic.setPixmap(pixmap)
                 newver_pic.mousePressEvent = self.open_update
                 newver_pic.setOpenExternalLinks(True)
@@ -116,7 +121,7 @@ class main(QtWidgets.QMainWindow):
             copyright_label = QLabel("Copyright © Upbits, 2018\nhttp://upbits.org/", window)
 
             title_pic = QLabel(window)
-            pixmap = QPixmap('logo.png')
+            pixmap = QPixmap('resources/logo.png')
             title_pic.setPixmap(pixmap)
             title_pic.resize(pixmap.width(), pixmap.height())
             title_pic.move(190, 150)
@@ -135,7 +140,7 @@ class main(QtWidgets.QMainWindow):
                 next_button.move(450, 330)
 
             self.elements = [next_button, copyright_label, title_pic]
-            if requests.get("http://upbits.org/reserv/lv.txt").text.split()[0] != str(__version__):
+            if requests.get("https://github.com/upbits/reserv-classic/raw/master/database/lv.txt").text.split()[0] != str(__version__):
                 self.elements.append(newver_pic)
 
     class settingsLayer(Layer):
@@ -179,7 +184,7 @@ class main(QtWidgets.QMainWindow):
 
             serverVersionLabel = QLabel(INSTALLEDlANG["serverVersion"], window)
             self.serverVersionCombobox = QComboBox(window)
-            self.serverVersionCombobox.addItems(requests.get("http://upbits.org/reserv/cores/cores_list.txt").text.split())
+            self.serverVersionCombobox.addItems(requests.get("https://github.com/upbits/reserv-classic/raw/master/database/cores/cores_list.txt").text.split())
             if platform.system() == DARWIN:
                 serverMotdLabel.resize(125, 15)
                 serverMotdLabel.move(70, 50)
@@ -316,7 +321,7 @@ class main(QtWidgets.QMainWindow):
 
             global plugsDict
             plugsDict = {}
-            for plugName in requests.get("http://upbits.org/reserv/plugins/plugins_list.txt").text.split():
+            for plugName in requests.get("https://github.com/upbits/reserv-classic/raw/master/database/plugins/plugins_list.txt").text.split():
                 plugItem = QStandardItem(plugName)
                 plugItem.setCheckable(True)
                 plugItem.setEditable(False)
@@ -440,7 +445,7 @@ class main(QtWidgets.QMainWindow):
         def __init__(self, window):
             done_label = QLabel(INSTALLEDlANG["wellDone"], window)
             back_pic = QLabel(window)
-            pixmap = QPixmap('done_pic.png')
+            pixmap = QPixmap('resources/done.png')
             back_pic.setPixmap(pixmap)
             back_pic.resize(pixmap.width(), pixmap.height())
 
@@ -478,7 +483,7 @@ class main(QtWidgets.QMainWindow):
     def serverBuildThread():
         buildingLabelChanger.setText(INSTALLEDlANG["downloadingServer"])
         setrMaxProgressProgressbar.signal.emit(100)
-        wget.download("http://upbits.org/reserv/bundle.zip", objSaveServLayer.serverSavePath + "/server.zip", bar=objBuildingLayer.progressbar_gui)
+        wget.download("https://github.com/upbits/reserv-classic/raw/master/database/bundle.zip", objSaveServLayer.serverSavePath + "/server.zip", bar=objBuildingLayer.progressbar_gui)
         setrProgressProgressbar.signal.emit(0)
         setrMaxProgressProgressbar.signal.emit(0)
         buildingLabelChanger.setText(INSTALLEDlANG["unpackingServer"])
@@ -490,14 +495,14 @@ class main(QtWidgets.QMainWindow):
         os.remove(objSaveServLayer.serverSavePath + "/server.zip")
         buildingLabelChanger.setText(INSTALLEDlANG["downloadingCore"])
         setrMaxProgressProgressbar.signal.emit(100)
-        wget.download("http://upbits.org/reserv/cores/" + objSetingsLayer.serverVersionCombobox.currentText() + ".jar", objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text(), bar=objBuildingLayer.progressbar_gui)
+        wget.download("https://github.com/upbits/reserv-classic/raw/master/database/cores/" + objSetingsLayer.serverVersionCombobox.currentText() + ".jar", objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text(), bar=objBuildingLayer.progressbar_gui)
         setrProgressProgressbar.signal.emit(0)
         setrMaxProgressProgressbar.signal.emit(0)
         for plug in plugsDict.items():
             if plug[1].checkState() == 2:
                 buildingLabelChanger.setText(INSTALLEDlANG["downloading"] + plug[0] + "...")
                 setrMaxProgressProgressbar.signal.emit(100)
-                wget.download("http://upbits.org/reserv/plugins/" + plug[0] + ".jar", objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text() + "/plugins/", bar=objBuildingLayer.progressbar_gui)
+                wget.download("https://github.com/upbits/reserv-classic/raw/master/database/plugins/" + plug[0] + ".jar", objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text() + "/plugins/", bar=objBuildingLayer.progressbar_gui)
                 setrProgressProgressbar.signal.emit(0)
         setrMaxProgressProgressbar.signal.emit(0)
 
