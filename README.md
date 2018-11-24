@@ -7,13 +7,13 @@ Reserv – is a open-source multiplatform program for quickly creating servers f
 
 |    OS   | Version | Codename |   Status  |
 |:-------:|:-------:|:--------:|:---------:|
-| Windows | 2.0.0.0 | Reborn   | Supported |
+| Windows | 2.0.0.1 | Reborn   | Supported |
 | Mac     | 1.1     | Classic  | Supported |
 | Linux   | 1.1     | Classic  | Supported |
 
 You can download Reserv for free using **[this](http://upbits.org/reserv#download)** link.
 
-### Donate
+## Donate
 If you want to support the project, then please do it [here](http://www.donationalerts.ru/r/upbits). And you can [follow me](http://twitter.com/ketraid) on the twitter!
 
 ---
