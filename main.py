@@ -530,7 +530,6 @@ class main(QtWidgets.QMainWindow):
         else:
             with open(objSaveServLayer.serverSavePath + "/" + objSetingsLayer.serverMotdEntry.text() + "/start.sh","w+") as autostart_save:
                 autostart_save.write("echo \"Reserv-Server\"\njava -Xmx1024M -Xms1024M -jar " + objSetingsLayer.serverVersionCombobox.currentText() + ".jar nogui_old")
-
         endShower.signal.emit()
 
     def __init__(self):
