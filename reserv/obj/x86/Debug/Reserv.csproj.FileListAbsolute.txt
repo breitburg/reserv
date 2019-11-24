@@ -1,0 +1,75 @@
+c:\users\ketsus\source\repos\Reserv\Reserv\bin\x86\Debug\Reserv.exe.config
+c:\users\ketsus\source\repos\Reserv\Reserv\bin\x86\Debug\Reserv.exe
+c:\users\ketsus\source\repos\Reserv\Reserv\bin\x86\Debug\Reserv.pdb
+c:\users\ketsus\source\repos\Reserv\Reserv\bin\x86\Debug\xNet.dll
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.CreateForm.resources
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.ListForm.resources
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.Properties.Resources.resources
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.csproj.GenerateResource.cache
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.csproj.CoreCompileInputs.cache
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.csproj.CopyComplete
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.exe
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.pdb
+c:\users\ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.csprojAssemblyReference.cache
+c:\users\ketsus\source\repos\Reserv\Reserv\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\Ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.ProcessingForm.resources
+C:\Users\Ketsus\source\repos\Reserv\Reserv\obj\x86\Debug\Reserv.AboutForm.resources
+C:\Users\Ketsus\source\repos\Reserv\Reserv\bin\x86\Debug\System.IO.Compression.ZipFile.dll
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.csprojAssemblyReference.cache
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.AboutForm.resources
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.CreateForm.resources
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.ListForm.resources
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.ProcessingForm.resources
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.Properties.Resources.resources
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.csproj.GenerateResource.cache
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.csproj.CoreCompileInputs.cache
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.exe
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.pdb
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\bin\x86\Debug\Reserv.exe.config
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\bin\x86\Debug\Reserv.exe
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\bin\x86\Debug\Reserv.pdb
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\bin\x86\Debug\System.IO.Compression.ZipFile.dll
+C:\Users\Ketsus\Dropbox\Reserv\Reserv\obj\x86\Debug\Reserv.csproj.CopyComplete
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.csprojAssemblyReference.cache
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.AboutForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.AutomaticTestsForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.BanKickForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.CodeView.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.CreatedForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.CreateForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.IPShowForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.ListForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.ProcessingForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.Properties.Resources.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.UpdateAvailable.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.UploadPluginForm.resources
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.csproj.GenerateResource.cache
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.exe
+C:\Users\Admin\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.pdb
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\bin\x86\Debug\Reserv.exe.config
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\bin\x86\Debug\Reserv.exe
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\bin\x86\Debug\Reserv.pdb
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\bin\x86\Debug\System.IO.Compression.ZipFile.dll
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\bin\x86\Debug\xNet.dll
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\bin\x86\Debug\Newtonsoft.Json.xml
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.csprojAssemblyReference.cache
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.AboutForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.AutomaticTestsForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.BanKickForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.CodeView.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.CreatedForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.CreateForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.IPShowForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.ListForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.ProcessingForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.Properties.Resources.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.UpdateAvailable.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.UploadPluginForm.resources
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.csproj.GenerateResource.cache
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.csproj.CoreCompileInputs.cache
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.csproj.CopyComplete
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.exe
+C:\Users\ketso\Dropbox\Reserv С#\Reserv\obj\x86\Debug\Reserv.pdb
